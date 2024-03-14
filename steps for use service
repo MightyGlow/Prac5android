@@ -1,0 +1,25 @@
+In res/layout/activity_main.xml file add two buttons and make changes to their properties as shown below
+
+
+Adding a sound file to the project
+Right click on res folder and select New-> Folder-> Raw resources folder
+Prof. Rafat Khan Rizvi College of Arts, Science and Commerce
+This will add a raw folder in the res folder
+Right click on res->New->Folder->Raw Resources Folder
+Now drag and drop sample.wav file in this folder
+Creating a Service
+File Menu -> New-> Service -> Service
+Class Name: AudioService
+Language: Kotlin
+Click Finish
+In the AudioService class create Mediaplayer variable and import Mediaplayer class by pressing
+Alt+Enter on Mediaplayer
+Inside the class type onStartCommand and select it to add its code. Repeat the same for onDestroy
+method
+Type the code in onStartCommand(), onDestroy() and onBind() as shown below to play and stop the
+media player on the start and stop of the service respectively
+
+
+In MainActivity.kt file add two functions StartService() and StopService() as shown below
+Add the names of StartService and StopService functions in the onClick property of btnStartService and
+btnStopService buttons
