@@ -1,0 +1,4 @@
+Right click on app-> New -> Other -> Broadcast Receiver
+
+<receiver> tag is added in the AndroidManifest.xml file. Add the <intent-filter> and <action> tags under
+the <receiver> tag 
