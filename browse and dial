@@ -1,0 +1,81 @@
+Activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:id="@+id/LinearLayout"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical"
+ tools:context=".MainActivity">
+ <TextView
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Enter the URL of the website to browse or phone number
+to Dial"
+ android:textAlignment="center"
+ android:textColor="@color/purple_200"
+ android:textSize="24sp" />
+ <EditText
+ android:id="@+id/edtURL"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:ems="10"
+ android:inputType="textPersonName" />
+ <Button
+ android:id="@+id/btnBrowse"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Browse" />
+ <Button
+ android:id="@+id/btnDial"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Dial" />
+</LinearLayout>
+
+
+
+
+
+MainActivity.kt
+package com.example.sykotlinpract6
+import android.app.ProgressDialog
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
+class MainActivity : AppCompatActivity() {
+ override fun onCreate(savedInstanceState: Bundle?) {
+ super.onCreate(savedInstanceState)
+ setContentView(R.layout.activity_main)
+ val edtURL = findViewById<EditText>(R.id.edtURL)
+ val btnBrowse = findViewById<Button>(R.id.btnBrowse)
+ val btnDial = findViewById<Button>(R.id.btnDial)
+ btnBrowse.setOnClickListener {
+ val pd = ProgressDialog(this)
+ pd.setMessage("Searching Webpage...")
+ pd.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+ pd.progress = 0
+ pd.show()
+ val s = edtURL.text.toString()
+ val uri= Uri.parse(s)
+ val browseIntent = Intent(Intent.ACTION_VIEW,uri)
+ startActivity(browseIntent)
+ }
+ btnDial.setOnClickListener {
+ val pd = ProgressDialog(this)
+ pd.setMessage("Dialling Number...")
+ pd.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+ pd.progress = 0
+ pd.show()
+ val p = edtURL.text.toString()
+ val dialIntent = Intent(Intent.ACTION_DIAL)
+ dialIntent.data = Uri.parse("tel:" + p)
+ startActivity(dialIntent)
+ }
+ }
+}
