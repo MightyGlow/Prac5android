@@ -1,0 +1,269 @@
+Fade_in.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+ <alpha
+ android:duration="1000"
+ android:fromAlpha="0.1"
+ android:toAlpha="1.0" />
+</set>
+
+
+
+
+Fade_out.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+ <alpha
+ android:duration="1000"
+ android:fromAlpha="1.0"
+ android:toAlpha="0.1" />
+</set>
+
+
+
+Rotateclockwise.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+ <rotate
+android:fromDegrees="0"
+android:toDegrees="360"
+ android:pivotX="50%"
+android:pivotY="50%"
+android:duration="1000"/>
+</set>
+
+
+
+Rotateanticlockwise.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+ <rotate android:fromDegrees="360" android:toDegrees="0"
+ android:pivotX="50%" android:pivotY="50%" android:duration="1000" />
+</set>
+
+
+
+Slide_down.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+ <translate
+ android:duration="1000"
+ android:fromYDelta="-100%"
+ android:toYDelta="0" />
+</set>
+
+
+
+
+Slide_up.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+ <translate
+ android:duration="1000"
+ android:fromYDelta="0"
+ android:toYDelta="-100%" />
+</set>
+
+
+
+Zoom_in.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+ <scale xmlns:android="http://schemas.android.com/apk/res/android"
+ android:duration="1000"
+ android:fromXScale="1"
+ android:fromYScale="1"
+ android:pivotX="50%"
+ android:pivotY="50%"
+ android:toXScale="1.5"
+ android:toYScale="1.5">
+ </scale>
+</set>
+
+
+Zoom_out.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+ <scale
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ android:duration="1000"
+ android:fromXScale="1.0"
+ android:fromYScale="1.0"
+ android:pivotX="50%"
+ android:pivotY="50%"
+ android:toXScale="0.5"
+ android:toYScale="0.5" >
+ </scale>
+</set>
+
+
+
+
+Activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical"
+ tools:context=".MainActivity">
+ <TextView
+ android:id="@+id/textView"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="XML Based Rotation Animation in Android"
+ android:textAlignment="center"
+ android:textColor="@color/purple_200"
+ android:textSize="20sp" />
+ <ImageView
+ android:id="@+id/imageView"
+ android:layout_width="match_parent"
+ android:layout_height="376dp"
+ app:srcCompat="@drawable/rotation"
+ tools:srcCompat="@drawable/rotation" />
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="54dp"
+ android:orientation="horizontal">
+ <Button
+ android:id="@+id/clockwise"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:text="Rotate Clockwise" />
+ <Button
+ android:id="@+id/anticlockwise"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:text="Rotate Anti Clockwise" />
+ </LinearLayout>
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="42dp"
+ android:orientation="horizontal">
+ <Button
+ android:id="@+id/slide_down"
+ android:layout_width="0dp"
+ android:layout_height="match_parent"
+ android:layout_weight="1"
+ android:text="Slide Down"
+ android:textAllCaps="false" />
+ <Button
+ android:id="@+id/slide_up"
+ android:layout_width="0dp"
+ android:layout_height="match_parent"
+ android:layout_weight="1"
+ android:text="Slide Up"
+ android:textAllCaps="false" />
+ </LinearLayout>
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="47dp"
+ android:orientation="horizontal">
+ <Button
+ android:id="@+id/zoom_in"
+ android:layout_width="0dp"
+ android:layout_height="match_parent"
+ android:layout_weight="1"
+ android:text="Zoom In"
+ android:textAllCaps="false" />
+ <Button
+ android:id="@+id/zoom_out"
+ android:layout_width="0dp"
+ android:layout_height="match_parent"
+ android:layout_weight="1"
+ android:text="Zoom Out"
+ android:textAllCaps="false" />
+ </LinearLayout>
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="73dp"
+ android:orientation="horizontal">
+ <Button
+ android:id="@+id/fade_in"
+ android:layout_width="0dp"
+ android:layout_height="match_parent"
+ android:layout_weight="1"
+ android:text="Fade In"
+ android:textAllCaps="false" />
+ <Button
+ android:id="@+id/fade_out"
+ android:layout_width="0dp"
+ android:layout_height="match_parent"
+ android:layout_weight="1"
+ android:text="Fade Out"
+ android:textAllCaps="false" />
+ </LinearLayout>
+</LinearLayout>
+
+
+
+
+MainActivity.kt
+package com.example.sykotlinpract5
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.os.Handler
+import android.view.View
+import android.view.animation.AnimationUtils
+import android.widget.Button
+import android.widget.ImageView
+class MainActivity : AppCompatActivity() {
+ override fun onCreate(savedInstanceState: Bundle?) {
+ super.onCreate(savedInstanceState)
+ setContentView(R.layout.activity_main)
+ val fadein=findViewById<Button>(R.id.fade_in)
+ val fadeout=findViewById<Button>(R.id.fade_out)
+ val zoomin=findViewById<Button>(R.id.zoom_in)
+ val zoomout=findViewById<Button>(R.id.zoom_out)
+ val slidedown=findViewById<Button>(R.id.slide_down)
+ val slideup=findViewById<Button>(R.id.slide_up)
+ val clockwise=findViewById<Button>(R.id.clockwise)
+ val anticlockwise=findViewById<Button>(R.id.anticlockwise)
+ val imageView=findViewById<ImageView>(R.id.imageView)
+ fadein.setOnClickListener {
+ imageView.visibility = View.VISIBLE
+ val animationFadeIn = AnimationUtils.loadAnimation(this,
+R.anim.fade_in)
+ imageView.startAnimation(animationFadeIn)
+ }
+ fadeout.setOnClickListener {
+ val animationFadeOut = AnimationUtils.loadAnimation(this,
+R.anim.fade_out)
+ imageView.startAnimation(animationFadeOut)
+ imageView.visibility = View.GONE
+ }
+ zoom_in.setOnClickListener {
+ val animationZoomIn = AnimationUtils.loadAnimation(this,
+R.anim.zoom_in)
+ imageView.startAnimation(animationZoomIn)
+ }
+ zoom_out.setOnClickListener {
+ val animationZoomOut = AnimationUtils.loadAnimation(this,
+R.anim.zoom_out)
+ imageView.startAnimation(animationZoomOut)
+ }
+ slide_down.setOnClickListener {
+ val animationSlideDown = AnimationUtils.loadAnimation(this,
+R.anim.slide_down)
+ imageView.startAnimation(animationSlideDown)
+ }
+ slide_up.setOnClickListener {
+ val animationSlideUp = AnimationUtils.loadAnimation(this,
+R.anim.slide_up)
+ imageView.startAnimation(animationSlideUp)
+ }
+ clockwise.setOnClickListener {
+ val animationclockwise = AnimationUtils.loadAnimation(this,
+R.anim.rotateclockwise)
+ imageView.startAnimation(animationclockwise)
+ }
+ anticlockwise.setOnClickListener {
+ val animationanticlockwise = AnimationUtils.loadAnimation(this,
+R.anim.rotateanticlockwise)
+ imageView.startAnimation(animationanticlockwise)
+ }
+ }
+}
