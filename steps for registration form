@@ -1,0 +1,40 @@
+Steps to make layout:-
+1. Right click on ConstraintLayout -> Convert View -> Select LinearLayout
+2. Right click on LinearLayout -> LinearLayout -> Convert Orientation to vertical
+3. Add a TextView set attributes in Attributes window => text-Registration Form,
+textStyle-bold true, textAlignment- center, textColor-
+"@android:color/holo_green_dark, textSize=24sp
+4. Add LinearLayout (horizontal)
+Prof. Rafat Khan Rizvi College of Arts, Science and Commerce
+5. Add 2 LinearLayout(vertical)
+6. In first LinearLayout(vertical) add 5 TextViews for Name,Gender,Date of Birth,
+Hobbies and Location. Give text property of each accordingly and change
+textSize and textColor. Put Space View in between the TextViews
+7. In second LinearLayout(vertical)
+a. add PlainText (for name) id-edtName text-(blank)
+b. add Radiogroup id-rdgGender orientation-horizontal
+c. Add two RadioButtons within the radiogroup
+d. First radiobutton id-radMale text-Male
+e. Second radiobutton id-radFemale text-Female
+8. Add a TextView id-edtDOB text-(blank)
+9. Add TableLayout and drag TableRow within it.Keep 2 TableRows remove the
+rest
+a. Right click on first TableRow ->LinearLayout ->Convert Orientation to
+horizontal
+b. Repeat for second TableRow
+c. In the first TableRow add two CheckBoxes
+d. First Checkbox id-chkFootball text-Football
+e. Second Checkbox id-chkCricket text-Cricket
+f. In the second TableRow add two Spinners
+g. First Spinner id-spnCountries
+h. Second Spinner id-spnStates
+10. In the main LinearLayout(Vertical) add FrameLayout
+a. Add ImageView in FrameLayout choose an image
+11. In the main LinearLayout(Vertical) below FrameLayout add Button id-Submit
+onClick-onSubmitClick
+
+To compile the project
+Build-> Make Project
+To make APK
+Build->Build Bundles/APKs-> Build APKs
+Click on Locate
