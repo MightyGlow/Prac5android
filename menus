@@ -1,0 +1,103 @@
+Optionmenus.xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+ <item
+ android:id="@+id/mnuSearch"
+ android:title="Search" />
+ <item
+ android:id="@+id/mnuDownload"
+ android:title="Download" />
+ <item
+ android:id="@+id/mnuSave"
+ android:title="Save" />
+ <item
+ android:id="@+id/mnuShare"
+ android:title="Share" />
+ <item
+ android:id="@+id/mnuExit"
+ android:title="Exit" />
+</menu>
+
+
+popupMenu.xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+ <item
+ android:id="@+id/mnuSearch"
+ android:title="Search" />
+ <item
+ android:id="@+id/mnuDownload"
+ android:title="Download" />
+ <item
+ android:id="@+id/mnuSave"
+ android:title="Save" />
+</menu>
+
+
+Strings.xml
+<resources>
+ <string name="app_name">Menuapp</string>
+ <string-array name="fruits">
+ <item>Apple</item>
+ <item>Grapes</item>
+ <item>Mango</item>
+ </string-array>
+</resources>
+
+
+MainActivity.kt
+class MainActivity : AppCompatActivity() {
+override fun onCreate(savedInstanceState: Bundle?) {
+ super.onCreate(savedInstanceState)
+ setContentView(R.layout.activity_main)
+//Register listview for context menu
+val listView=findViewById<ListView>(R.id.listView)
+registerForContextMenu(listView)
+//attach popup menu to image using OnClickListener . Inflate the popupmenu,
+//set its OnMenuItemClickListener and show the popupmenu
+val img = findViewById<ImageView>(R.id.image)
+img.setOnClickListener {
+ val popupMenu: PopupMenu = PopupMenu(this,img)
+popupMenu.menuInflater.inflate(R.menu.popupmenu, popupMenu.menu)
+popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener{
+item->
+Toast.makeText(this,"You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
+true
+})
+popupMenu.show()
+}
+override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+ menuInflater.inflate(R.menu.optionmenu,menu)
+ return super.onCreateOptionsMenu(menu)
+}
+override fun onOptionsItemSelected(item: MenuItem): Boolean {
+when (item.itemId){
+R.id.mnuSearch ->
+Toast.makeText(this,"Search Selected",Toast.LENGTH_SHORT).show()
+R.id.mnuDownload ->
+Toast.makeText(this,"Download Selected",Toast.LENGTH_SHORT).show()
+R.id.mnuSave ->
+Toast.makeText(this,"Save Selected",Toast.LENGTH_SHORT).show()
+R.id.mnuShare ->
+Toast.makeText(this,"Share Selected",Toast.LENGTH_SHORT).show()
+R.id.mnuExit ->
+{ Toast.makeText(this,"Exit Selected",Toast.LENGTH_SHORT).show()
+finish()
+}
+ }
+ return super.onOptionsItemSelected(item)
+}
+override fun onCreateContextMenu(
+ menu: ContextMenu?,
+ v: View?,
+ menuInfo: ContextMenu.ContextMenuInfo?
+) {
+ val inflater = menuInflater
+ inflater.inflate(R.menu.optionmenu, menu)
+ super.onCreateContextMenu(menu, v, menuInfo)
+}
+override fun onContextItemSelected(item: MenuItem): Boolean {
+ Toast.makeText(this,"Selected :"+item.title,Toast.LENGTH_SHORT).show()
+ return super.onContextItemSelected(item)
+}
+}
