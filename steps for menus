@@ -15,3 +15,10 @@ paste
 
 In MainActivity.kt file press Ctrl+O and override the functions onCreateOptionsMenu,
 onOptionsItemSelected, onCreateContextMenu and onContextItemSelected
+
+
+Go to activity_main.xml -> Palette ->Legacy -> Drag list view to Linear Layout
+Go to mainActivity.kt
+
+Go to strings.xml for creating arrays 
+Go to listview -> Select the right button on entries -> pick a resource ->Fruits
