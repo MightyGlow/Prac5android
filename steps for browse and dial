@@ -1,0 +1,12 @@
+CHOOSE EMPTY ACTIVITY
+ENTER URL OF THE WEBSITE TO BROWSE PHONE NUMBER TO DIAL in textview
+ADD 2 buttons
+
+Right click on Constraint layout -> Make it LinerLayout -> Right click on LinearLayout
+-> Make it vertical
+Put 2 buttons in the LinearLayout
+
+Go to buildgradle moduleapp -> change compilesdk to 34
+
+AAPT ERROR -> IT’S A IMAGE VIEW PROBLEM
+GO TO XML FILE AND DELETE SRC PROPERTY FROM THERE
