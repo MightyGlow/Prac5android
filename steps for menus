@@ -1,0 +1,17 @@
+Options Menu
+Right click on app-> New-> Android Resource File
+File Name: optionmenus
+Resource Type: Menu
+Directory Name: menu
+Click OK
+This creates menu folder under /res folder and menu.xml file under menu folder
+Drag 5 MenuItems under menu and set their ID and Title appropriately
+
+Similarly make menu file popupMenu.xml having the following menus
+Cut
+Copy
+paste
+
+
+In MainActivity.kt file press Ctrl+O and override the functions onCreateOptionsMenu,
+onOptionsItemSelected, onCreateContextMenu and onContextItemSelected
