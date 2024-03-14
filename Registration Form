@@ -1,0 +1,233 @@
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical"
+ tools:context=".MainActivity">
+ <TextView
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Registration Form"
+ android:textAlignment="center"
+ android:textColor="@android:color/holo_green_dark"
+ android:textSize="24sp"
+ app:layout_constraintBottom_toBottomOf="parent"
+ app:layout_constraintLeft_toLeftOf="parent"
+ app:layout_constraintRight_toRightOf="parent"
+ app:layout_constraintTop_toTopOf="parent" />
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="222dp"
+ android:orientation="horizontal">
+ <LinearLayout
+ android:layout_width="198dp"
+ android:layout_height="match_parent"
+ android:orientation="vertical">
+ <TextView
+ android:id="@+id/textView"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Name : "
+ android:textColor="@color/teal_200"
+ android:textSize="18sp" />
+ <Space
+ android:layout_width="match_parent"
+ android:layout_height="16dp" />
+ <TextView
+ android:id="@+id/textView2"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Gender :"
+ android:textColor="@color/teal_200"
+ android:textSize="18sp" />
+ <Space
+ android:layout_width="match_parent"
+ android:layout_height="12dp" />
+ <TextView
+ android:id="@+id/textView3"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Date of Birth :"
+ android:textColor="@color/teal_200"
+ android:textSize="18sp" />
+ <Space
+ android:layout_width="match_parent"
+ android:layout_height="20dp" />
+ <TextView
+ android:id="@+id/textView4"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Hobbies :"
+ android:textColor="@color/teal_200"
+ android:textSize="18sp" />
+ <Space
+ android:layout_width="match_parent"
+ android:layout_height="15dp" />
+ <TextView
+ android:id="@+id/textView6"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Location:"
+ android:textColor="@color/teal_200"
+ android:textSize="18sp" />
+ </LinearLayout>
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical">
+ <EditText
+ android:id="@+id/edtName"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:ems="10"
+ android:inputType="textPersonName" />
+ <RadioGroup
+ android:id="@+id/rdgGender"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="horizontal">
+ <RadioButton
+ android:id="@+id/radMale"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+android:text="Male" />
+ <RadioButton
+ android:id="@+id/radFemale"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Female" />
+ </RadioGroup>
+ <EditText
+ android:id="@+id/edtDOB"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:ems="10"
+ android:inputType="textPersonName" />
+ <TableLayout
+ android:layout_width="match_parent"
+ android:layout_height="71dp"
+ android:orientation="vertical">
+ <TableRow
+ android:layout_width="match_parent"
+android:layout_height="31dp">
+ <CheckBox
+ android:id="@+id/chkFootBall"
+ android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="FootBall" />
+ <CheckBox
+ android:id="@+id/chkCricket"
+ android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Cricket" />
+ </TableRow>
+ <TableRow
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content">
+ <Spinner
+ android:id="@+id/spnCountries"
+ android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+ <Spinner
+ android:id="@+id/spnStates"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+ </TableRow>
+ </TableLayout>
+ </LinearLayout>
+ </LinearLayout>
+ <FrameLayout
+ android:layout_width="match_parent"
+ android:layout_height="218dp">
+ <ImageView
+ android:id="@+id/imageView"
+ android:layout_width="match_parent"
+ android:layout_height="222dp"
+ tools:srcCompat="@drawable/flowers" />
+ </FrameLayout>
+ <Button
+ android:id="@+id/btnSubmit"
+ android:layout_width="match_parent"
+ android:layout_height="79dp"
+ android:onClick="onSubmitClick"
+ android:text="Submit"
+ android:textAlignment="center"
+ android:textSize="24sp" />
+</LinearLayout>
+
+
+Strings.xml
+<resources>
+ <string name="app_name">pract2</string>
+ <string-array name="states">
+ <item>Maharashtra</item>
+ <item>Telangana</item>
+ <item>Gujarat</item>
+ <item>Rajasthan</item>
+ </string-array>
+</resources>
+
+
+
+MainActivity.kt
+package com.example.sycskotlinpract2
+import android.app.Activity
+import android.os.Bundle
+import android.view.View
+import android.widget.*
+class MainActivity : Activity(), AdapterView.OnItemSelectedListener {
+ override fun onCreate(savedInstanceState: Bundle?) {
+ super.onCreate(savedInstanceState)
+ setContentView(R.layout.activity_main)
+ val spnCountries = findViewById<Spinner>(R.id.spnCountries)
+ spnCountries.onItemSelectedListener = this
+ val arrCountries = arrayOf("India", "Bangladesh", "Iran", "Malaysia")
+ val adapter = ArrayAdapter(
+ this,
+ android.R.layout.simple_spinner_item, arrCountries
+ )
+ spnCountries.adapter = adapter
+ }
+ override fun onItemSelected(parent: AdapterView<*>, view: View, position:
+Int, id: Long) {
+ val spnStates = findViewById<Spinner>(R.id.spnStates)
+ val str = parent.getItemAtPosition(position).toString()
+ Toast.makeText(this, "Selected :$str", Toast.LENGTH_SHORT).show()
+ if (str === "India") {
+ val adap = ArrayAdapter(
+ this,
+ android.R.layout.simple_spinner_item,
+resources.getStringArray(R.array.states)
+ )
+
+adap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+ spnStates.adapter = adap
+ } else {
+ spnStates.adapter = null
+ }
+ }
+ override fun onNothingSelected(parent: AdapterView<*>?) {}
+ fun onSubmitClick(view: View?) {
+ val chkCricket = findViewById<CheckBox>(R.id.chkCricket)
+ val chkFootball = findViewById<CheckBox>(R.id.chkFootBall)
+ val radMale = findViewById<RadioButton>(R.id.radMale)
+ val radFemale = findViewById<RadioButton>(R.id.radFemale)
+ val edtName = findViewById<EditText>(R.id.edtName)
+ val edtDOB = findViewById<EditText>(R.id.edtDOB)
+ var strHobbies = ""
+ var strSalutation = ""
+ if (chkCricket.isChecked) strHobbies = "Cricket\n"
+ if (chkFootball.isChecked) strHobbies = "Football\n"
+ if (radMale.isChecked) strSalutation = "Mr."
+Prof. Rafat Khan Rizvi College of Arts, Science and Commerce
+ if (radFemale.isChecked) strSalutation = "Ms."
+ Toast.makeText(
+ this, "Thank you for registration"+
+strSalutation+edtName.text+"\nYour Date of Birth is"+edtDOB.text+
+ "\nYour Hobbies are"+strHobbies,
+Toast.LENGTH_LONG).show()
+ }
+}
