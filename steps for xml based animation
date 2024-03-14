@@ -1,0 +1,8 @@
+Click on app folder
+File->New->Android Resource File
+File name:- fade_in
+Resource Type:- Animation
+Similarly add other files (fade_out, Rotateclockwise , Rotateanticlockwise, Slide_down, Slide_up,
+Zoom_in, Zoom_out) or copy and paste in anim folder and rename the files
+
+
